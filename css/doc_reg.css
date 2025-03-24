@@ -1,0 +1,90 @@
+/* General container styling */
+.doc {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#login-form-wrap {
+    background-color: #ffffff;
+    width: 350px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    font-size: 16px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+p {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+    border: 2px solid rgb(219, 213, 213);
+    border-color: black;
+    outline: none;
+}
+
+/* Button styling */
+button[type="button"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #3ca9e2;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="button"]:hover {
+    background-color: #329dd5;
+}
+
+/* Create account link styling */
+#create-account-wrap {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #777;
+}
+
+#create-account-wrap a {
+    color: #3ca9e2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#create-account-wrap a:hover {
+    color: #329dd5;
+    text-decoration: underline;
+}

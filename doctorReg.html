@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!--BootStrap linked-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <!-- Icon -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">  
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid py-2 border-bottom d-none d-lg-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
+                    <div class="d-inline-flex align-items-center">
+                        <a class="text-decoration-none text-body pe-3" href="contact.html"><i class="bi bi-telephone me-2"></i>+91 XXXXXXXXXX</a>
+                        <span class="text-body">|</span>
+                        <a class="text-decoration-none text-body px-3" href="medwiseCare.html"><i class="bi bi-envelope me-2"></i>medwise.care</a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center text-lg-end">
+                    <div class="d-inline-flex align-items-center">
+                        <a class="text-body px-2" href="">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a class="text-body px-2" href="">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a class="text-body px-2" href="">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a class="text-body px-2" href="">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a class="text-body ps-2" href="">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar end -->
+
+    <!-- Navbar Start -->
+    <div class="container-fluid sticky-top bg-body-tertiary shadow-sm">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-light py-3 py-lg-0">
+                <a href="index.html" class="navbar-brand">
+                    <img src="img/medwise-removebg.png" alt="Medwise">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="index.html" class="nav-item nav-link ">Home</a>
+                        <a href="about.html" class="nav-item nav-link">About</a>
+                        <a href="service.html" class="nav-item nav-link">Service</a>
+                        <a href="login.html" class="nav-item nav-link active">Login</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="blog.html" class="dropdown-item">Blog Grid</a>
+                                
+                                <a href="team.html" class="dropdown-item">The Team</a>
+                                <a href="appointment.html" class="dropdown-item">Appointment</a>
+                                <a href="search.html" class="dropdown-item">Search</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar end -->
+
+
+    <div class="log" style="color: black;">
+        <div class="container mt-5">
+            <h2>Doctor Registration Form</h2>
+            <form id="doctorForm" enctype="multipart/form-data" action="/api/doctors/" method="POST">
+                <!-- Personal Information -->
+                <div class="mb-3">
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="fullName" name="fullName" required>
+                </div>
+                <div class="mb-3">
+                    <label for="dob" class="form-label">Date of Birth</label>
+                    <input type="date" class="form-control" id="dob" name="dob" required>
+                </div>
+                <div class="mb-3">
+                    <label for="gender" class="form-label">Gender</label>
+                    <select class="form-select" id="gender" name="gender" required>
+                        <option value="" disabled selected>Select your gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="contactNumber" class="form-label">Contact Number</label>
+                    <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+        
+                <!-- Medical Qualifications -->
+                <h4>Medical Qualifications</h4>
+                <div class="mb-3">
+                    <label for="degree" class="form-label">Medical Degree</label>
+                    <input type="text" class="form-control" id="degree" name="degree" required>
+                </div>
+                <div class="mb-3">
+                    <label for="specialization" class="form-label">Specializations</label>
+                    <div id="specializations">
+                        <div class="input-group mb-2 specialization-item">
+                            <input type="text" class="form-control" name="specializations[]" placeholder="Enter specialization" required>
+                            <button type="button" class="btn btn-danger remove-specialization">Remove</button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-success" id="addSpecialization">Add Specialization</button>
+                </div>
+                <div class="mb-3">
+                    <label for="licenseNumber" class="form-label">Medical License Number</label>
+                    <input type="text" class="form-control" id="licenseNumber" name="licenseNumber" required>
+                </div>
+                <div class="mb-3">
+                    <label for="issuingAuthority" class="form-label">Issuing Authority</label>
+                    <input type="text" class="form-control" id="issuingAuthority" name="issuingAuthority" required>
+                </div>
+        
+                <!-- Fees -->
+                <div class="mb-3">
+                    <label for="fees" class="form-label">Consultation Fees (Rupees)</label>
+                    <input type="number" class="form-control" id="fees" name="fees" min="0" step="0.01" required>
+                </div>
+        
+                <!-- Document Upload -->
+                <div class="mb-3">
+                    <label for="licenseFile" class="form-label">Upload Medical License (PDF)</label>
+                    <input type="file" class="form-control" id="licenseFile" name="licenseFile" accept="application/pdf" required>
+                </div>
+        
+                <!-- Timing Slots -->
+                <h4>Available Timing Slots</h4>
+                <div id="timingSlots">
+                    <div class="row mb-2 timing-slot">
+                        <div class="col-md-5">
+                            <label class="form-label">Day</label>
+                            <select class="form-select" name="timingDays[]" required>
+                                <option value="" disabled selected>Select Day</option>
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                                <option value="Saturday">Saturday</option>
+                                <option value="Sunday">Sunday</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">From</label>
+                            <input type="time" class="form-control" name="timingFrom[]" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">To</label>
+                            <input type="time" class="form-control" name="timingTo[]" required>
+                        </div>
+                        <div class="col-md-1 d-flex align-items-end">
+                            <button type="button" class="btn btn-danger remove-timing-slot">X</button>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success" id="addTimingSlot">Add Timing Slot</button>
+        
+                <!-- Additional Information -->
+                <h4 class="mt-4">Additional Information</h4>
+                <div class="mb-3">
+                    <label for="bio" class="form-label">Brief Biography</label>
+                    <textarea class="form-control" id="bio" name="bio" rows="3" required></textarea>
+                </div>
+        
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="terms" name="terms" required>
+                    <label class="form-check-label" for="terms">I accept the Terms & Conditions</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+        
+        <!-- Bootstrap JS and dependencies -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <!-- Custom JavaScript for dynamic fields -->
+        <script>
+            // Handle adding specializations
+            document.getElementById('addSpecialization').addEventListener('click', function () {
+                const specializationsDiv = document.getElementById('specializations');
+                const newSpec = document.createElement('div');
+                newSpec.classList.add('input-group', 'mb-2', 'specialization-item');
+                newSpec.innerHTML = `
+                    <input type="text" class="form-control" name="specializations[]" placeholder="Enter specialization" required>
+                    <button type="button" class="btn btn-danger remove-specialization">Remove</button>
+                `;
+                specializationsDiv.appendChild(newSpec);
+            });
+        
+            // Handle removing specializations
+            document.getElementById('specializations').addEventListener('click', function (e) {
+                if (e.target && e.target.classList.contains('remove-specialization')) {
+                    e.target.parentElement.remove();
+                }
+            });
+        
+            // Handle adding timing slots
+            document.getElementById('addTimingSlot').addEventListener('click', function () {
+                const timingSlotsDiv = document.getElementById('timingSlots');
+                const newSlot = document.createElement('div');
+                newSlot.classList.add('row', 'mb-2', 'timing-slot');
+                newSlot.innerHTML = `
+                    <div class="col-md-5">
+                        <label class="form-label">Day</label>
+                        <select class="form-select" name="timingDays[]" required>
+                            <option value="" disabled selected>Select Day</option>
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">From</label>
+                        <input type="time" class="form-control" name="timingFrom[]" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">To</label>
+                        <input type="time" class="form-control" name="timingTo[]" required>
+                    </div>
+                    <div class="col-md-1 d-flex align-items-end">
+                        <button type="button" class="btn btn-danger remove-timing-slot">X</button>
+                    </div>
+                `;
+                timingSlotsDiv.appendChild(newSlot);
+            });
+        
+            // Handle removing timing slots
+            document.getElementById('timingSlots').addEventListener('click', function (e) {
+                if (e.target && e.target.classList.contains('remove-timing-slot')) {
+                    e.target.closest('.timing-slot').remove();
+                }
+            });
+        </script>
+        <script>
+            document.getElementById('doctorForm').addEventListener('submit', async function (event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                const form = event.target;
+                const formData = new FormData(form);
+
+                try {
+                    const response = await fetch('http://127.0.0.1:8000/api/doctors/', {
+                        method: 'POST',
+                        body: formData,
+                    });
+
+                    if (response.ok) {
+                        try {
+                            const result = await response.json();
+                            alert('Doctor registered successfully!');
+                            console.log(result);
+                        } catch {
+                            alert('Doctor registered successfully, but no JSON response received.');
+                        }
+                        form.reset(); // Reset the form after successful submission
+                    } else {
+                        const errorText = await response.text();
+                        alert('Failed to register doctor: ' + errorText);
+                        console.error('Error response:', errorText);
+                    }
+                } catch (err) {
+                    alert('An error occurred while submitting the form.');
+                    console.error(err);
+                }
+            });
+        </script>
+        
+    </div>
+
+
+
+   <!-- Footer Start -->
+   <div class="container-fluid bg-dark text-light mt-5 py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">Get In Touch</h4>
+                <p class="mb-4">"MedWise - Empowering Your Health Journey
+
+                    At MedWise, we're dedicated to providing a comprehensive and user-friendly platform to support your health and wellness. Our mission is to empower individuals like you to take control of your health by offering innovative tools and resources.</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>Kanpur </p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>medwise.care</p>
+                <p class="mb-0"><i class="fa fa-phone-alt text-primary me-3"></i>+91XXXXXXXXXX</p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">Quick Links</h4>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-light mb-2" href="index.html"><i class="fa fa-angle-right me-2"></i>Home</a>
+                    <a class="text-light mb-2" href="about.html"><i class="fa fa-angle-right me-2"></i>About Us</a>
+                    <a class="text-light mb-2" href="service.html"><i class="fa fa-angle-right me-2"></i>Our Services</a>
+                    <a class="text-light mb-2" href="team.html"><i class="fa fa-angle-right me-2"></i>Meet The Team</a>
+                    <a class="text-light mb-2" href="blog.html"><i class="fa fa-angle-right me-2"></i>Latest Blog</a>
+                    <a class="text-light" href="contact.html"><i class="fa fa-angle-right me-2"></i>Contact Us</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">Popular Links</h4>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-light mb-2" href="index.html"><i class="fa fa-angle-right me-2"></i>Home</a>
+                    <a class="text-light mb-2" href="about.html"><i class="fa fa-angle-right me-2"></i>About Us</a>
+                    <a class="text-light mb-2" href="service.html"><i class="fa fa-angle-right me-2"></i>Our Services</a>
+                    <a class="text-light mb-2" href="team.html"><i class="fa fa-angle-right me-2"></i>Meet The Team</a>
+                    <a class="text-light mb-2" href="blog.html"><i class="fa fa-angle-right me-2"></i>Latest Blog</a>
+                    <a class="text-light" href="contact.html"><i class="fa fa-angle-right me-2"></i>Contact Us</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">Newsletter</h4>
+                <form action="blog.html">
+                    <div class="input-group">
+                        <input type="text" class="form-control p-3 border-0" placeholder="Your Email Address">
+                        <button class="btn btn-primary">Sign Up</button>
+                    </div>
+                </form>
+                <h6 class="text-primary text-uppercase mt-4 mb-3">Follow Us</h6>
+                <div class="d-flex">
+                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid bg-dark text-light border-top border-secondary py-4">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="mb-md-0">&copy; <a class="text-primary" href="#">Medwise</a>. All Rights Reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="mb-0">Designed by <a class="text-primary" href=""></a></p>Medwise Team
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+
+ <!-- Back to Top -->
+ <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+ <!-- JavaScript Libraries -->
+ <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+ <script src="lib/easing/easing.min.js"></script>
+ <script src="lib/waypoints/waypoints.min.js"></script>
+ <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+ <script src="lib/tempusdominus/js/moment.min.js"></script>
+ <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+ <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+ <script src="js/main.js"></script>
+</body>
+
+</html>
