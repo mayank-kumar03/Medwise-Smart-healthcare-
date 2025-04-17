@@ -125,7 +125,48 @@
         </div>
     
         <script src="./js/doc_login.js"></script>
-    
+        <script>
+            document.getElementById('login-btn').addEventListener('click', async function () {
+                const contact = document.getElementById('contact').value; // Email or mobile number
+                const password = document.getElementById('password').value; // Password
+
+                // Validate input fields
+                if (!contact || !password) {
+                    alert('Please fill in all fields.');
+                    return;
+                }
+
+                try {
+                    // Send login request to the backend
+                    const response = await fetch('http://127.0.0.1:8000/api/doctors/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ contact, password }),
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        alert('Login successful!');
+                        console.log(result);
+
+                        // Save the token to localStorage or cookies
+                        localStorage.setItem('token', result.token);
+
+                        // Redirect to the dashboard or another page
+                        window.location.href = 'dashboard.html';
+                    } else {
+                        const errorText = await response.text();
+                        alert('Login failed: ' + errorText);
+                        console.error('Error response:', errorText);
+                    }
+                } catch (err) {
+                    alert('An error occurred while logging in.');
+                    console.error(err);
+                }
+            });
+        </script>
     </div>
 
 

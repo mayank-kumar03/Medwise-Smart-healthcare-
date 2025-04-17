@@ -1,4 +1,6 @@
 import { Doctor } from '../models/doctor.js';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 // Create a new doctor
 export const createDoctor = async (req, res) => {
@@ -36,6 +38,44 @@ export const createDoctor = async (req, res) => {
   } catch (error) {
     console.error("Error creating doctor:", error.message);
     res.status(400).json({ error: error.message });
+  }
+};
+
+
+
+export const loginDoctor = async (req, res) => {
+  const { contact, password } = req.body;
+
+  try {
+    // Find doctor by email or mobile number
+    const doctor = await Doctor.findOne({
+      $or: [{ email: contact }, { contactNumber: contact }],
+    });
+
+    if (!doctor) {
+      return res.status(404).json({ message: 'Doctor not found' });
+    }
+
+    // Check if the password is correct
+    const isPasswordValid = await bcrypt.compare(password, doctor.password);
+    if (!isPasswordValid) {
+      return res.status(401).json({ message: 'Invalid credentials' });
+    }
+
+    // Generate a JWT token
+    const token = jwt.sign({ id: doctor._id }, 'your_jwt_secret', { expiresIn: '1h' });
+
+    res.status(200).json({
+      message: 'Login successful',
+      token,
+      doctor: {
+        id: doctor._id,
+        fullName: doctor.fullName,
+        email: doctor.email,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({ message: 'An error occurred', error: error.message });
   }
 };
 
