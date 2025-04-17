@@ -105,7 +105,7 @@
     <div class="log" style="color: black;">
         <div class="container mt-5">
             <h2>Doctor Registration Form</h2>
-            <form id="doctorForm" enctype="multipart/form-data" action="/api/doctors/" method="POST">
+            <form id="doctorForm">
                 <!-- Personal Information -->
                 <div class="mb-3">
                     <label for="fullName" class="form-label">Full Name</label>
@@ -285,40 +285,35 @@
                     e.target.closest('.timing-slot').remove();
                 }
             });
+
+            document.getElementById("doctorForm").addEventListener("submit", async function (event) {
+    event.preventDefault(); // Prevents default form submission
+
+    const formData = new FormData(this); // Collects all form data
+
+    try {
+        const response = await fetch("http://127.0.0.1:8000/api/doctors", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await response.json();
+        if (!response) {
+            alert("Error: " + data.message);
+            
+        } else {
+            alert("Registration successful!");
+        }
+    } catch (error) {
+        console.error("Error submitting form:", error);
+        alert("Failed to register. Check console for details.");
+    }
+});
+
         </script>
-        <script>
-            document.getElementById('doctorForm').addEventListener('submit', async function (event) {
-                event.preventDefault(); // Prevent the default form submission
 
-                const form = event.target;
-                const formData = new FormData(form);
-
-                try {
-                    const response = await fetch('http://127.0.0.1:8000/api/doctors/', {
-                        method: 'POST',
-                        body: formData,
-                    });
-
-                    if (response.ok) {
-                        try {
-                            const result = await response.json();
-                            alert('Doctor registered successfully!');
-                            console.log(result);
-                        } catch {
-                            alert('Doctor registered successfully, but no JSON response received.');
-                        }
-                        form.reset(); // Reset the form after successful submission
-                    } else {
-                        const errorText = await response.text();
-                        alert('Failed to register doctor: ' + errorText);
-                        console.error('Error response:', errorText);
-                    }
-                } catch (err) {
-                    alert('An error occurred while submitting the form.');
-                    console.error(err);
-                }
-            });
-        </script>
+      
+        
         
     </div>
 
