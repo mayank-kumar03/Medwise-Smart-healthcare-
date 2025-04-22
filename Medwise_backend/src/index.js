@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from "cors";
-import multer from "multer";
+
 import dotenv from 'dotenv';
 import { patientRouter } from './routes/patientRoutes.js';
 import { doctorRouter } from './routes/doctorRoutes.js';
@@ -13,7 +13,7 @@ const router = express.Router();
 
 const app = express();
 const PORT = process.env.PORT || 8000;
-const upload = multer({ dest: 'uploads/' });
+// const upload = multer({ dest: 'uploads/' });
 // Middleware
 app.use(express.json());
 app.use(cors())
@@ -26,7 +26,8 @@ mongoose
 
 // Routes
 app.use('/api/patients', patientRouter);
-app.use('/api/doctors', upload.single('licenseFile'), doctorRouter);
+//app.use('/api/doctors', upload.single('licenseFile'), doctorRouter);
+app.use('/api/doctors', doctorRouter);
 // router.post('/doctors', upload.single('licenseFile'), createDoctor);
 
 // Start the server

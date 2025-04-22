@@ -25,6 +25,12 @@ const doctorSchema = new mongoose.Schema(
       unique: true,
     },
 
+    // Password for login
+    password: {
+      type: String,
+      required: true,
+    },
+
     // Medical Qualifications
     degree: {
       type: String,
@@ -78,7 +84,7 @@ const doctorSchema = new mongoose.Schema(
     // Additional Information
     bio: {
       type: String,
-      required:true,
+      required: true,
     },
 
     // Terms & Conditions acceptance

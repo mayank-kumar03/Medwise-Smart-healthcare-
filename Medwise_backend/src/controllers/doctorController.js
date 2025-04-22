@@ -4,41 +4,44 @@ import jwt from 'jsonwebtoken';
 
 // Create a new doctor
 export const createDoctor = async (req, res) => {
-  try {
-    // Parse timingSlots from individual arrays
-    const timingSlots = (req.body.timingDays || []).map((day, index) => ({
-      day,
-      from: req.body.timingFrom[index],
-      to: req.body.timingTo[index]
-    }));
+    try {
+        // Hash the password
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-    const doctorData = {
-      fullName: req.body.fullName,
-      dob: req.body.dob,
-      gender: req.body.gender,
-      contactNumber: req.body.contactNumber,
-      email: req.body.email,
-      password: req.body.password,
-      degree: req.body.degree,
-      specializations: Array.isArray(req.body['specializations[]'])
-        ? req.body['specializations[]']
-        : [req.body['specializations[]']],
-      licenseNumber: req.body.licenseNumber,
-      issuingAuthority: req.body.issuingAuthority,
-      consultationFees: parseFloat(req.body.fees),
-      licenseFile: req.file ? req.file.path : null,
-      timingSlots: timingSlots,
-      bio: req.body.bio,
-      termsAccepted: req.body.terms === 'on' || req.body.terms === true
-    };
+        // Parse timingSlots from individual arrays
+        const timingSlots = (req.body.timingDays || []).map((day, index) => ({
+            day,
+            from: req.body.timingFrom[index],
+            to: req.body.timingTo[index],
+        }));
 
-    const doctor = new Doctor(doctorData);
-    const savedDoctor = await doctor.save();
-    res.status(201).json(savedDoctor);
-  } catch (error) {
-    console.error("Error creating doctor:", error.message);
-    res.status(400).json({ error: error.message });
-  }
+        const doctorData = {
+            fullName: req.body.fullName,
+            dob: req.body.dob,
+            gender: req.body.gender,
+            contactNumber: req.body.contactNumber,
+            email: req.body.email,
+            password: hashedPassword, // Save the hashed password
+            degree: req.body.degree,
+            specializations: Array.isArray(req.body['specializations[]'])
+                ? req.body['specializations[]']
+                : [req.body['specializations[]']],
+            licenseNumber: req.body.licenseNumber,
+            issuingAuthority: req.body.issuingAuthority,
+            consultationFees: parseFloat(req.body.fees),
+            licenseFile: req.file ? req.file.path : null,
+            timingSlots: timingSlots,
+            bio: req.body.bio,
+            termsAccepted: req.body.terms === 'on' || req.body.terms === true,
+        };
+
+        const doctor = new Doctor(doctorData);
+        const savedDoctor = await doctor.save();
+        res.status(201).json(savedDoctor);
+    } catch (error) {
+        console.error("Error creating doctor:", error.message);
+        res.status(400).json({ error: error.message });
+    }
 };
 
 

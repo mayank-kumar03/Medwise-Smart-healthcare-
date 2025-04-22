@@ -292,17 +292,19 @@
     const formData = new FormData(this); // Collects all form data
 
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/doctors", {
+        const response = await fetch("http://127.0.0.1:4000/api/doctors", {
             method: "POST",
             body: formData
         });
 
         const data = await response.json();
-        if (!response) {
-            alert("Error: " + data.message);
+        if (response.ok) {
+            alert("Registration successful!");
+            
             
         } else {
-            alert("Registration successful!");
+            alert("Error: " + data.message);
+           
         }
     } catch (error) {
         console.error("Error submitting form:", error);
