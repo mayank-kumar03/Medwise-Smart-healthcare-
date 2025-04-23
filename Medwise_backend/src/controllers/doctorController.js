@@ -37,7 +37,7 @@ export const createDoctor = async (req, res) => {
 
         const doctor = new Doctor(doctorData);
         const savedDoctor = await doctor.save();
-        res.status(201).json(savedDoctor);
+        res.status(201).json({ message: "Doctor registered successfully!" });
     } catch (error) {
         console.error("Error creating doctor:", error.message);
         res.status(400).json({ error: error.message });

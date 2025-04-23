@@ -148,14 +148,22 @@
                     console.log("Response:", response);
                     console.log("Response Data:", data);
 
-                    if (response.ok) {
+                    if (!response) {
+                        // alert("Login successful!");
+                        // // Save the token to localStorage or cookies
+                        // localStorage.setItem("token", data.token);
+                        // // Redirect to the patient dashboard
+                        // window.location.href ="patient_dashbord.html"
+
+                        alert("Error: " + (data.message || "Invalid credentials"));
+                    } else {
+                        // alert("Error: " + (data.message || "Invalid credentials"));
+
                         alert("Login successful!");
                         // Save the token to localStorage or cookies
                         localStorage.setItem("token", data.token);
                         // Redirect to the patient dashboard
                         window.location.href ="patient_dashbord.html"
-                    } else {
-                        alert("Error: " + (data.message || "Invalid credentials"));
                     }
                 } catch (error) {
                     console.error("Error logging in:", error);
