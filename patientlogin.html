@@ -108,7 +108,7 @@
             <h1>Login</h1>
             <form id="login-form" >
                 <p>
-                    <label for="contact">Email or Mobile Number</label>
+                    <label for="contact">Email or Username</label>
                     <input type="text" id="contact" placeholder="Enter your email or mobile number" required>
                 </p>
                 <p>
@@ -125,7 +125,44 @@
         </div>
     
         <script src="./js/doc_login.js"></script>
-    
+        <script>
+            document.getElementById("login-btn").addEventListener("click", async function () {
+                const contact = document.getElementById("contact").value;
+                const password = document.getElementById("password").value;
+
+                if (!contact || !password) {
+                    alert("Please fill in all fields.");
+                    return;
+                }
+
+                try {
+                    const response = await fetch("http://127.0.0.1:4000/api/patients/login", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({ contact, password }),
+                    });
+
+                    const data = await response.json();
+                    console.log("Response:", response);
+                    console.log("Response Data:", data);
+
+                    if (response.ok) {
+                        alert("Login successful!");
+                        // Save the token to localStorage or cookies
+                        localStorage.setItem("token", data.token);
+                        // Redirect to the patient dashboard
+                        window.location.href ="patient_dashbord.html"
+                    } else {
+                        alert("Error: " + (data.message || "Invalid credentials"));
+                    }
+                } catch (error) {
+                    console.error("Error logging in:", error);
+                    alert("An error occurred. Please try again.");
+                }
+            });
+        </script>
     </div>
 
 

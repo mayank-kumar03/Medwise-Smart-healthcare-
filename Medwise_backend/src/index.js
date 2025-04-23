@@ -26,9 +26,9 @@ mongoose
 
 // Routes
 app.use('/api/patients', patientRouter);
-//app.use('/api/doctors', upload.single('licenseFile'), doctorRouter);
+
 app.use('/api/doctors', doctorRouter);
-// router.post('/doctors', upload.single('licenseFile'), createDoctor);
+
 
 // Start the server
 app.listen(PORT, () => {
